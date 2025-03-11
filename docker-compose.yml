@@ -1,12 +1,13 @@
 services:
-  app:
+  api-gateway-server:
     build: .
-    container_name: api
+    image: api-gateway:1.3.0
+    container_name: api-gateway-server
     restart: always
     ports:
       - "8080:8080"
     environment:
-      MIW_API_URL: http://host.docker.internal:8081
+      EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE: http://eureka-server:8761/eureka/
     networks:
       - miw
 
